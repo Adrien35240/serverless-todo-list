@@ -24,3 +24,10 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+README-dev.md
+
+# terraform
+/deploy/.terraform
+/deploy/terraform.tfstate
+/deploy/terraform.tfstate.backup
+/deploy/terraform.lock.hcl
