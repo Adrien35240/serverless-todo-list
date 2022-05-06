@@ -30,4 +30,4 @@ README-dev.md
 /deploy/.terraform
 /deploy/terraform.tfstate
 /deploy/terraform.tfstate.backup
-/deploy/terraform.lock.hcl
+/deploy/.terraform.lock.hcl
