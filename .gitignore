@@ -31,4 +31,5 @@ README-dev.md
 /deploy/terraform.tfstate
 /deploy/terraform.tfstate.backup
 /deploy/.terraform.lock.hcl
-*.zip
+
+/lambdas/build
