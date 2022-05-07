@@ -12,8 +12,7 @@
 ### compile ts lambdas file
     npm run compile
 ### RUN Container
-    docker build -t <name> .
-    docker run -p 3000:3000 -d <name>
+    docker compose up -d
 ### CMD Terraform
     terraform init
     terraform plan
