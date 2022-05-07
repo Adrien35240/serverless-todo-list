@@ -1,11 +1,9 @@
+name: Deploy on ECR
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-name: Deploy on ECR
-
 jobs:
   deploy:
     name: Deploy
