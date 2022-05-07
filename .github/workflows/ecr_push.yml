@@ -20,7 +20,7 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::141115429158:role/gh-action-ecr
+        role-to-assume: arn:aws:iam::141115429158:oidc-provider/token.actions.githubusercontent.com
         aws-region: eu-west-3
 
     - name: Build, tag, and push the image to Amazon ECR
