@@ -1,16 +1,16 @@
-name: Deploy on ECR
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+
+name: deploy on ECR
+
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
