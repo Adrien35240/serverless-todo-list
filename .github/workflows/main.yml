@@ -1,4 +1,4 @@
-name: Master CI
+name: master branch workflow
 on:
   push:
     branches: [ master ]

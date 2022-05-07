@@ -4,27 +4,26 @@ on:
   pull_request:
     branches: [ master ]
 
-name: todo-list CI on ECR
+name: Deploy on ECR
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-
+    permissions:
+      id-token: write
+      contents: read
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Configure AWS credentials
+   - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
+        role-to-assume: arn:aws:iam::141115429158:role/gh-action-ecr
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-3
-
-    - name: Login to Amazon ECR
-      id: todo-list-user
-      uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, tag, and push the image to Amazon ECR
       id: build-image
