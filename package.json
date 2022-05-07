@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "docker compose up",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",

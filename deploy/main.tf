@@ -12,6 +12,7 @@ terraform {
       source  = "hashicorp/archive"
       version = "~> 2.2.0"
     }
+
   }
 
   required_version = "~> 1.0"
@@ -19,6 +20,10 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
+}
+# create ecr ressource
+resource "aws_ecr_repository" "ecr_repo" {
+  name = "ecr_todolist_serverless_app"
 }
 # create random name for the bucket b
 resource "random_pet" "b" {

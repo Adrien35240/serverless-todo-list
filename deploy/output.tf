@@ -17,3 +17,8 @@ output "base_url" {
 
   value = aws_apigatewayv2_stage.lambda.invoke_url
 }
+# ecr output
+output "ecr_repo" {
+  description = "url of the todo app"
+  value = aws_ecr_repository.ecr_repo.repository_url
+}
