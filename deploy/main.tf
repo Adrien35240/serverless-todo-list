@@ -26,7 +26,7 @@ resource "aws_ecr_repository" "ecr_repo" {
 # create random name for the bucket b
 resource "random_pet" "b" {
   prefix = "learn-terraform-functions"
-  length = 4
+  length = 6
 }
 # create s3 bucket
 resource "aws_s3_bucket" "b" {

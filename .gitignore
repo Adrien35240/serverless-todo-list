@@ -33,3 +33,5 @@ README-dev.md
 /deploy/.terraform.lock.hcl
 
 /lambdas/build
+
+/docs
