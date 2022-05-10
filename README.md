@@ -7,6 +7,7 @@
  - RDS
  - Api Gateway
  - ECR 
+ - Fargate
  
  
 ### CMD

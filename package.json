@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "refresh": "terraform apply -refresh-only",
-    "compile": "tsc lambdas/*ts --outDir lambdas/build/"
+    "compile": "tsc deploy/lambdas/*ts --outDir deploy/lambdas/build/"
   },
   "eslintConfig": {
     "extends": [
