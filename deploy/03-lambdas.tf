@@ -1,64 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.1.0"
-    }
-    archive = {
-      source  = "hashicorp/archive"
-      version = "~> 2.2.0"
-    }
-  }
-  required_version = "~> 1.0"
-}
-
-provider "aws" {
-  region = var.aws_region
-}
-# create ecr ressource
-resource "aws_ecr_repository" "ecr_repo" {
-  name = "ecr_todolist_serverless_app"
-}
-# create random name for the bucket b
-resource "random_pet" "b" {
-  prefix = "learn-terraform-functions"
-  length = 6
-}
-# create s3 bucket
-resource "aws_s3_bucket" "b" {
-  bucket = random_pet.b.id
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
-
-resource "aws_s3_bucket_acl" "example" {
-  bucket = aws_s3_bucket.b.id
-  acl    = "private"
-}
-# copy lambda function code in the bucket
-data "archive_file" "lambda_hello_world" {
-  type = "zip"
-
-  source_dir  = "../lambdas/build"
-  output_path = "../lambdas/build/hello-world.zip"
-}
-
-resource "aws_s3_object" "lambda_hello_world" {
-  bucket = aws_s3_bucket.b.id
-
-  key    = "hello-world.zip"
-  source = data.archive_file.lambda_hello_world.output_path
-
-  etag = filemd5(data.archive_file.lambda_hello_world.output_path)
-}
-# define the lambda function
 resource "aws_lambda_function" "hello_world" {
   function_name = "HelloWorld"
 
@@ -159,4 +98,21 @@ resource "aws_lambda_permission" "api_gw" {
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_apigatewayv2_api.lambda.execution_arn}/*/*"
+}
+
+# copy lambda function code in the bucket
+data "archive_file" "lambda_hello_world" {
+  type = "zip"
+
+  source_dir  = "./lambdas/build"
+  output_path = "./lambdas/build/hello-world.zip"
+}
+
+resource "aws_s3_object" "lambda_hello_world" {
+  bucket = aws_s3_bucket.b.id
+
+  key    = "hello-world.zip"
+  source = data.archive_file.lambda_hello_world.output_path
+
+  etag = filemd5(data.archive_file.lambda_hello_world.output_path)
 }
