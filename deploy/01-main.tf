@@ -19,9 +19,4 @@ terraform {
 provider "aws" {
   region = var.default_region
 }
-# create ecr ressource
-resource "aws_ecr_repository" "ecr_repo" {
-  name = var.app_name
-}
-
 
