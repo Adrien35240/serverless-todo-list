@@ -1,8 +1,17 @@
-variable "app_name" {}
+variable "app_name" {
+  type = string
+  description = "The name for the app"
+}
 
-variable "environment" {}
+variable "environment" {
+  type = string
+  description = "environment"
+}
 
-variable "default_region" {}
+variable "default_region" {
+  type = string
+  description = "the default region for all aws services"
+}
 
 variable "domain_name" {
   type        = string
