@@ -18,7 +18,12 @@ output "base_url" {
   value = aws_apigatewayv2_stage.lambda.invoke_url
 }
 # ecr output
-output "ecr_repo" {
+output "private-ecr" {
   description = "url of the todo app"
-  value = aws_ecr_repository.ecr_repo.repository_url
+  value = aws_ecr_repository.private-ecr.repository_url
+}
+# apprunner output
+output "aws_apprunner_service" {
+  description = "url of the app runner"
+  value = aws_apprunner_service.my-app-runner.service_url
 }
