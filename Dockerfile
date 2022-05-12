@@ -8,4 +8,4 @@ RUN chown -R node:node /src
 USER node
 
 EXPOSE 80
-CMD ["npm", "start"]
+CMD npm run star

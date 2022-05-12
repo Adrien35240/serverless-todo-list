@@ -33,9 +33,8 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: "public-ecr"
+        ECR_REPOSITORY: "private-ecr"
         IMAGE_TAG: "latest"
       run: |
-        docker build -t public-ecr .
-        docker tag public-ecr:latest public.ecr.aws/h0y0k1c4/public-ecr:latest
-        docker push public.ecr.aws/h0y0k1c4/public-ecr:latest
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
