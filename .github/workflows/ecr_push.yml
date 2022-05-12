@@ -36,5 +36,5 @@ jobs:
         ECR_REPOSITORY: "public-ecr"
         IMAGE_TAG: "latest"
       run: |
-        docker build -t public.ecr.aws/$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push public.ecr.aws/$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker build -t public-ecr .
+        docker push public.ecr.aws/h0y0k1c4/public-ecr:latest
