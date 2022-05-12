@@ -22,3 +22,8 @@ output "private-ecr" {
   description = "url of the todo app"
   value = aws_ecr_repository.private-ecr.repository_url
 }
+# apprunner output
+# output "aws_apprunner_service" {
+#   description = "url of the app runner"
+#   value = aws_apprunner_service.my-app-runner.service_url
+# }
