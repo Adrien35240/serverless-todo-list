@@ -37,4 +37,5 @@ jobs:
         IMAGE_TAG: "latest"
       run: |
         docker build -t public-ecr .
+        docker tag public-ecr:latest public.ecr.aws/h0y0k1c4/public-ecr:latest
         docker push public.ecr.aws/h0y0k1c4/public-ecr:latest
