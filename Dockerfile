@@ -1,11 +1,9 @@
-FROM node:lts
+FROM node:14-alpine
 
 WORKDIR /src
-COPY ./package*.json ./
-RUN npm i
+COPY package.json .
+RUN npm install
 COPY . .
-RUN chown -R node:node /src
-USER node
 
-EXPOSE 80
-CMD npm run star
+EXPOSE 3000
+CMD npm run start

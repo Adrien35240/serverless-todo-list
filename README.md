@@ -15,6 +15,10 @@
     npm run compile
 ### RUN Container
     docker compose up -d
+or
+
+    docker build -t <name> .
+    docker run -it -p 3000:3000 <name>
 ### CMD Terraform
     terraform init
     terraform plan
