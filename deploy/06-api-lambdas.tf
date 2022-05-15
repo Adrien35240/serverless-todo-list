@@ -1,19 +1,19 @@
-resource "aws_lambda_function" "hello_world" {
+resource "aws_lambda_function" "todo-lambda-hello" {
   function_name = "HelloWorld"
 
-  s3_bucket = aws_s3_bucket.b.id
-  s3_key    = aws_s3_object.lambda_hello_world.key
+  s3_bucket = aws_s3_bucket.todo-lambda.id
+  s3_key    = aws_s3_object.todo-lambda.key
 
   runtime = "nodejs14.x"
   handler = "hello.handler"
 
-  source_code_hash = data.archive_file.lambda_hello_world.output_base64sha256
+  source_code_hash = data.archive_file.todo-lambda.output_base64sha256
 
-  role = aws_iam_role.lambda_exectl.arn
+  role = aws_iam_role.todo-lambda.arn
 }
 
 
-resource "aws_iam_role" "lambda_exectl" {
+resource "aws_iam_role" "todo-lambda" {
   name = "serverless_lambda"
 
   assume_role_policy = jsonencode({
@@ -30,8 +30,8 @@ resource "aws_iam_role" "lambda_exectl" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_policy" {
-  role       = aws_iam_role.lambda_exectl.name
+resource "aws_iam_role_policy_attachment" "todo-lambda" {
+  role       = aws_iam_role.todo.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 

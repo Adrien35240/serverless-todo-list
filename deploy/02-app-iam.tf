@@ -1,4 +1,4 @@
-resource "aws_iam_role" "test" {
+resource "aws_iam_role" "todo" {
   name = "${var.app_name}_app"
 
   assume_role_policy = <<POLICY
@@ -18,8 +18,8 @@ resource "aws_iam_role" "test" {
 POLICY
 }
 
-resource "aws_iam_role_policy_attachment" "test" {
-  role = "${aws_iam_role.test.name}"
+resource "aws_iam_role_policy_attachment" "todo" {
+  role = "${aws_iam_role.todo.name}"
 
   // This policy adds logging + ecr permissions
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
