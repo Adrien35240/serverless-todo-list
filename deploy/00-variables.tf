@@ -1,19 +1,12 @@
-variable "app_name" {
-  type = string
-  description = "The name for the app"
+variable default_region {
+    description = "the default region for all aws sesrvices"
+    type = string
 }
-
-variable "environment" {
-  type = string
-  description = "environment"
+variable app_name {
+    description = "the prefix-name of the services in aws for front"
+    type = string
 }
-
-variable "default_region" {
-  type = string
-  description = "the default region for all aws services"
-}
-
 variable "domain_name" {
-  type        = string
-  description = "The domain name for the website."
+  description = "the default domain name"
+  type = string
 }
