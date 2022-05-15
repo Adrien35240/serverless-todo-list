@@ -45,13 +45,13 @@ resource "aws_security_group" "todo" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 }
-
+# WWW configuration
 # create a ip elastic
 resource "aws_eip" "todo" {
   vpc                       = true
 }
 
-# target group
+# target group for www
 resource "aws_lb_target_group" "todo" {
   name        = "${var.app_name}"
   target_type = "ip"
@@ -88,6 +88,7 @@ resource "aws_lb_listener" "todo" {
 data "aws_route53_zone" "todo" {
   name         = "${var.domain_name}"
 }
+
 resource "aws_route53_record" "todo-www" {
   zone_id = data.aws_route53_zone.todo.zone_id
   name    = "${var.app_name}"
